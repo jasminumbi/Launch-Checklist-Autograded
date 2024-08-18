@@ -45,10 +45,10 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
     
     let readyForLaunch = true;
 
-    pilotStatus.innerHTML = `Pilot ${pilotName} is ready for launch`;
-    copilotStatus.innerHTML = `Co-pilot ${copilotName} is ready for launch`;
+    pilotStatus.innerHTML = `Pilot ${pilot} is ready for launch`;
+    copilotStatus.innerHTML = `Co-pilot ${copilot} is ready for launch`;
 
-    if (Number(fuel) < 10000) {
+    if (fuelLevel < 10000) {
         fuelStatus.innerHTML = "Fuel level too low for launch";
         readyForLaunch = false;
         launchStatus.innerHTML = "Shuttle Not Ready for Launch";
@@ -56,29 +56,16 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
     } 
     else {
         fuelStatus.innerHTML = "Fuel level high enough for launch";
-        readyForLaunch = true;
     }
-    if (Number(cargo) > 10000) {
+    if (cargoLevel > 10000) {
         cargoStatus.innerHTML = "Cargo mass too heavy for launch";
         readyForLaunch = false;
         launchStatus.innerHTML = "Shuttle Not Ready for Launch";
         launchStatus.style.color = "red";
     } else {
         cargoStatus.innerHTML = "Cargo mass low enough for launch";
-        readyForLaunch = true;    
     }
 
-    if (Number(fuel) < 10000 && Number(cargo) > 10000) {
-        fuelStatus.innerHTML = "Fuel level too low for launch";
-        cargoStatus.innerHTML = "Cargo mass too heavy for launch";
-        readyForLaunch = false;
-        launchStatus.innerHTML = "Shuttle Not Ready for Launch";
-        launchStatus.style.color = "red";
-    } else {
-        fuelStatus.innerHTML = "Fuel level high enough for launch";
-        cargoStatus.innerHTML = "Cargo mass low enough for launch";
-        readyForLaunch = true;
-        }
     faultyItems.style.visibility = "visible";
     
     if(readyForLaunch) {
